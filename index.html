@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Converter</title>
+  
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#5856D6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Converter">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <div class="header">
+      <h1>Converter</h1>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-category="length">📏 Length</button>
+      <button class="tab" data-category="weight">⚖️ Weight</button>
+      <button class="tab" data-category="temp">🌡️ Temp</button>
+      <button class="tab" data-category="volume">🧪 Volume</button>
+      <button class="tab" data-category="currency">💱 Currency</button>
+    </div>
+
+    <!-- Converter Card -->
+    <div class="converter-card">
+      <!-- From -->
+      <div class="input-group">
+        <select id="from-unit" class="unit-select"></select>
+        <input type="number" id="from-value" class="value-input" placeholder="0" inputmode="decimal">
+      </div>
+
+      <!-- Swap Button -->
+      <button class="swap-btn" id="swap-btn">
+        <span>⇅</span>
+      </button>
+
+      <!-- To -->
+      <div class="input-group">
+        <select id="to-unit" class="unit-select"></select>
+        <input type="number" id="to-value" class="value-input" placeholder="0" readonly>
+      </div>
+    </div>
+
+    <!-- Quick Convert Grid -->
+    <div class="quick-grid" id="quick-grid">
+      <!-- Filled by JS -->
+    </div>
+
+    <!-- Currency Rate Info -->
+    <div class="rate-info" id="rate-info" style="display: none;">
+      <span id="rate-text"></span>
+      <span id="rate-update"></span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
