@@ -174,13 +174,11 @@ function convert() {
     result = baseValue / toDef.toBase;
   }
   
-  // Format result
-  if (Math.abs(result) >= 1000000) {
-    toValue.value = result.toExponential(4);
-  } else if (Math.abs(result) < 0.0001 && result !== 0) {
-    toValue.value = result.toExponential(4);
+  // Format result - always use regular numbers
+  if (Number.isInteger(result)) {
+    toValue.value = result.toLocaleString('en-US');
   } else {
-    toValue.value = parseFloat(result.toPrecision(8));
+    toValue.value = parseFloat(result.toFixed(6)).toLocaleString('en-US', { maximumFractionDigits: 6 });
   }
   
   // Save selections
@@ -248,9 +246,9 @@ function updateQuickGrid() {
       result = baseValue / unit.toBase;
     }
     
-    const formatted = Math.abs(result) >= 10000 
-      ? result.toExponential(2) 
-      : parseFloat(result.toPrecision(6));
+    const formatted = Number.isInteger(result)
+      ? result.toLocaleString('en-US')
+      : parseFloat(result.toFixed(4)).toLocaleString('en-US', { maximumFractionDigits: 4 });
     
     return `
       <div class="quick-item">
